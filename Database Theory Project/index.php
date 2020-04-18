@@ -2,7 +2,7 @@
 require_once "config.php";
 echo "Hello World!";
 
-$sql = "CREATE TABLE accounts(
+$sql = "CREATE TABLE if not exists accounts(
     account_username NOT NULL PRIMARY KEY,
     account_password NOT NULL
 )";
