@@ -9,7 +9,7 @@ $sql = "CREATE TABLE accounts(
 if(mysqli_query($conn, $sql)){
     echo "Table created successfully.";
 } else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
 }
 ?>
 <!DOCTYPE html>
