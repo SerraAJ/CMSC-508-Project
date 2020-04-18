@@ -3,10 +3,11 @@ require_once "config.php";
 echo "Hello World!";
 
 $sql = "CREATE TABLE if not exists accounts(
-    account_username NOT NULL,
-    account_password NOT NULL,
+    account_username    VARCHAR(30) NOT NULL,
+    account_password    VARCHAR (255) NOT NULL,
     PRIMARY KEY (account_username)
 )";
+
 if(mysqli_query($conn, $sql)){
     echo "Table created successfully.";
 } else{
