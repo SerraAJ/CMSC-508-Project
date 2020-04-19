@@ -36,12 +36,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 $username_error = "This username is already taken.";
             }
             
+            mysqli_stmt_close($stmt);
+            
         }
         else
         {
             echo "Something went wrong, please try again.";
         }
-        mysqli_stmt_close($stmt);
+        
      }
      
      //Password
