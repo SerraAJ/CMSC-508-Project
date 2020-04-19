@@ -75,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
      
      else 
      {
-         if( empty($password_error && $password != $confirm_password))
+         if( empty($password_error) && $password != $confirm_password)
          {
              $confirm_password_error = "Passwords did not match.";
          }
