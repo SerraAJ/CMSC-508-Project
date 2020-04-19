@@ -28,6 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         
         if($stmt = mysqli_prepare($conn, $sql))
         {
+            echo "stmt prepare initialized";
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             $param_username = $username;
             
