@@ -1,9 +1,6 @@
 <?php
 require_once "config.php";
-$conn = mysqli_connect('localhost', 'project_25', 'V00727541', 'project_25')
-or
-die("Error: Could not connect to database." .
-    mysqli_connect_error() );
+
 
 $username = "";
 $password = "";
@@ -28,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     
     else 
     {
-        $sql = "SELECT username FROM accounts WHERE username = ?";
+        $sql = "SELECT account_username FROM accounts WHERE account_username = ?";
         
         if($stmt = mysqli_prepare($conn, $sql))
         {
@@ -82,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
      
      if( empty($username_error) && empty($password_error) && empty($confirm_password_error))
      {
-        $sql = "INSERT INTO accounts (username, password) VALUES (?, ?)";
+        $sql = "INSERT INTO accounts (account_username, account_password) VALUES (?, ?)";
         if( $stmt = mysqli_prepare($conn, $sql))
         {
             mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
