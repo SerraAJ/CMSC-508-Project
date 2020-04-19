@@ -21,8 +21,10 @@ if(mysqli_query($conn, $sql)){
 
 <h1>Welcome to the Convention Management Database.</h1>
 <h2>Please register a new account, or log in.</h2>
-
+<br>
 <a href = "register.php">Register a New Account</a>
+<br>
+<a href = "login.php">Log in to an Existing Account</a>
 
 
 
