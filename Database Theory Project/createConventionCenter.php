@@ -8,7 +8,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
 }
 require_once "config.php";
 $sql = "CREATE TABLE IF NOT EXISTS convention_centers(
-    venue_id        INT NOT NULL AUTO_INCREMENT,
+    venue_id        INT(6) NOT NULL AUTO_INCREMENT,
     name          VARCHAR(200) NOT NULL,
     address      VARCHAR(999) NOT NULL UNIQUE,
     phone_number CHAR(11) NOT NULL,
