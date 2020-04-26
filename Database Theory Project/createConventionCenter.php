@@ -111,7 +111,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             
         }
     }
-    my_sqli_close($conn);
+    mysqli_close($conn);
     
     
 }
