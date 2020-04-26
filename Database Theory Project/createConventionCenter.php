@@ -17,6 +17,7 @@ $sql = "CREATE TABLE IF NOT EXISTS convention_centers(
 )";
 if(mysqli_query($conn, $sql)){
     
+    
 } else{
     echo "ERROR: Could not  execute $sql. " . mysqli_error($conn);
 }
@@ -122,7 +123,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <html>
 <body>
 
-<h1>Add a new Convention Center or Venue!</h1>
+<h1>Add a new Convention Center or Venue</h1>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 Name of Venue: <input type = "text" name = "name">
