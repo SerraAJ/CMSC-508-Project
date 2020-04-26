@@ -10,7 +10,7 @@ require_once "config.php";
 $sql = "CREATE TABLE IF NOT EXISTS convention_centers(
     venue_id        INT(6) NOT NULL AUTO_INCREMENT,
     name          VARCHAR(200) NOT NULL,
-    address      VARCHAR(999) NOT NULL UNIQUE,
+    address      VARCHAR(400) NOT NULL UNIQUE,
     phone_number CHAR(11) NOT NULL,
     floors       INT(3),
     PRIMARY KEY (venue_id)
@@ -50,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     }
     elseif(strlen($address) > 999)
     {
-        $address_error = "This address is too long; must be 999 or fewer characters.";
+        $address_error = "This address is too long; must be 400 or fewer characters.";
     }
     else
     {
