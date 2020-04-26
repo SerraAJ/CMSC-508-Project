@@ -6,10 +6,30 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
     header("location:index.php");
     exit;
 }
-$username = $_SESSION["username"];
-echo "Welcome, " . $username . ". You are successfully logged in.";
+if(isset($_SESSION ["bounce_message"]))
+{
+    $message = $_SESSION["bounce_message"];
+    echo $message;
+}
+
+echo "\nWhat would you like to do?\n \n"
 
 
 
 
 ?>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<br>
+<a href = "createConvention.php">Create a new Convention or Event!</a>
+<br>
+<a href = "logout.php">Log out of this account.</a>
+
+
+
+</body>
+</html>
