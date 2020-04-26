@@ -80,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $phone_number_error = "Please enter a phone number for the location.";
     }
-    else if(!is_int($phone_number) || strlen($phone_number) <> 10)
+    else if(!is_int($phone_number) || strlen($phone_number) != 10)
     {
         $phone_number_error = "Please enter the phone number as a 10 digit number with no other characters.";
     }
