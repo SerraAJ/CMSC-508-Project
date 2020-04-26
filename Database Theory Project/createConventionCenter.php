@@ -80,17 +80,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $phone_number_error = "Please enter a phone number for the location.";
     }
-    else if(!is_int($phone_number) || strlen($phone_number) < 10 || strlen($phone_number) > 10)
+    else if(!ctype_digit($phone_number))
+    {
+        $phone_number_error = "Please enter the phone number as a 10 digit number with no other characters.";
+    }
+    else if(strlen($phone_number) < 10 || strlen($phone_number) > 10)
     {
         $phone_number_error = "Please enter the phone number as a 10 digit number with no other characters.";
     }
     
     $floors = test_input($_POST["floors"]); 
-    if(!is_int($floors) && !empty($floors))
+    if(!empty($floors))
     {
-        $floors_error = "Please enter a number of floors or leave blank.";
-    }
+        if(!ctype_digit($floors))
+        {
+          $floors_error = "Please enter a number of floors or leave blank.";
     
+        }
+    }
     if(empty($name_error) && empty($address_error) && empty($phone_number_error) && empty($floors_error))
     {
         $sql = "INSERT INTO convention_centers (name, address, phone_number, floors) VALUES (?, ?, ?, ?)";
