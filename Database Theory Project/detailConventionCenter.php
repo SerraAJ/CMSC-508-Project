@@ -36,6 +36,11 @@ mysqli_close($conn);
 
 <!DOCTYPE html>
 <html>
+<style>
+th {text-align: left;}
+th, td {padding: 15px;}
+table, th, td {border: 1px solid black;}
+</style>
 <body>
 <br><br>
 <a href = "viewConventionCenter.php">Click here to return to the list of Convention Centers.</a>
