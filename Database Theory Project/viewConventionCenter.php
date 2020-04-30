@@ -65,8 +65,7 @@ $sql = "SELECT  venue_id, name FROM convention_centers";
 $query = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($query))
 {
-    echo "<option value = ".$row["venue_id"]."> " .
-        $row["name"] . "  " . $row["venue_id"]."</option>";
+    echo "<option value = $row[venue_id]> $row[name]  $row[venue_id]</option>";
 }
 mysqli_close($conn);
 ?>
