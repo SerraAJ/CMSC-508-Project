@@ -13,6 +13,10 @@ $inspect_venue_id_error = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
+    if($_POST["venues"] == "-")
+    {
+        $inspect_venue_id_error = "Please choose a database from the dropdown list.";
+    }
     $inspect_venue_id = test_input($_POST["venues"]);
     if(strrpos($inspect_venue_id, " ", 0) == false)
     {
@@ -63,7 +67,7 @@ table, th, td {border: 1px solid black;}
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 <select id = "venues" name="venues">
-<option value = "0">Test?</option>
+<option>-</option>
 <?php 
 $sql = "SELECT  venue_id, name FROM convention_centers";
 $results = mysqli_query($conn, $sql);
