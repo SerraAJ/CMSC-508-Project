@@ -1,5 +1,5 @@
 <?php
-require "config.php";
+require_once "config.php";
 session_start();
 
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
@@ -60,14 +60,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <select id = "venues" name="venues">
 <option value = "0">Test?</option>
 <?php 
-require "config.php";
 $sql = "SELECT  venue_id, name FROM convention_centers";
 $results = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($results))
 {
     echo "<option> $row[name]  $row[venue_id]</option>";
 }
-mysqli_close($conn);
+
 ?>
 </select>
 <span class = "error"> <?php echo $inspect_venue_id_error; ?></span>
