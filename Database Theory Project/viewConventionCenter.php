@@ -62,10 +62,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <?php 
 require "config.php";
 $sql = "SELECT  venue_id, name FROM convention_centers";
-$query = mysqli_query($conn, $sql);
-while($row = mysqli_fetch_array($query))
+$results = mysqli_query($conn, $sql);
+while($row = mysqli_fetch_array($results))
 {
-    echo "<option value = $row[venue_id]> $row[name]  $row[venue_id]</option>";
+    echo "<option> $row[name]  $row[venue_id]</option>";
 }
 mysqli_close($conn);
 ?>
