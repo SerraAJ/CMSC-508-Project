@@ -58,6 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 <select id = "venues" name="venues">
+<option value = "0">Test?</option>
 <?php 
 require "config.php";
 $sql = "SELECT  venue_id, name FROM convention_centers";
