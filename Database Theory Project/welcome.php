@@ -29,6 +29,8 @@ echo "\nWhat would you like to do?\n \n"
 <br>
 <a href = "createConventionCenter.php">Register a Convention Center or Venue</a>
 <br>
+<a href = "viewConventionCenter.php">View Information for Venues</a>
+<br>
 <a href = "logout.php">Log out of this account.</a>
 
 
