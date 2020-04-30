@@ -79,12 +79,30 @@ while($row = mysqli_fetch_array($results))
 
 
 
-<input type = "submit" name = "submit" value = "Submit">
+<input type = "submit" name = "submit" value = "View Details">
 
 </form>
 
 <br><br>
  <a href = "welcome.php">Go back to the welcome page by clicking here.</a>
 
+<br>
+<table>
+<tr> <th>Venue Name</th><th>Venue ID</th><th>Address</th></tr>
+<?php 
+$sql = "SELECT name, venue_id, address FROM convention_centers";
+$result = mysqli_query($conn, $sql);
+while($row = mysqli_fetch_array($result))
+{
+    $name = $row['name'];
+    $venue_id = $row['venue_id'];
+    $address = $row['address'];
+    echo"<tr><td style='width: 300px;'>".$name.
+    "</td><td style='width: 200px;'>".$venue_id.
+    "</td><td style='width: 400px;'>".$address."</td></tr>";
+    
+}
+?>
+</table>
 </body>
 </html>
