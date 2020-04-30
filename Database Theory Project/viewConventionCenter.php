@@ -1,5 +1,5 @@
 <?php
-require_once "config.php";
+require "config.php";
 session_start();
 
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
@@ -57,19 +57,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-<input type = "text" list = "select_id">
-<datalist id = "select_id">
+<select id = "venues" name="venues">
 <?php 
-require_once "config.php";
-$sql = "SELECT CONCAT(c.name, '  ', CONVERT(VARCHAR(6), c.venue_id)) AS Venue FROM convention_centers c";
+require "config.php";
+$sql = "SELECT  venue_id, name FROM convention_centers";
 $query = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($query))
 {
-    echo "<option> $row[Venue]</option>";
+    echo "<option value = ".$row["venue_id"]."> " .
+        $row["name"] . "  " . $row["venue_id"]."</option>";
 }
-
+mysqli_close($conn);
 ?>
-</datalist>
+</select>
 <span class = "error"> <?php echo $inspect_venue_id_error; ?></span>
 <br><br>
 
