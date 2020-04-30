@@ -13,7 +13,7 @@ $inspect_venue_id_error = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    $inspect_venue_id = test_input($_POST["select_id"]);
+    $inspect_venue_id = test_input($_POST["venues"]);
     if(strrpos($inspect_venue_id, " ", 0) == false)
     {
         $inspect_venue_id_error = "You must select a database from the list to see its details.";
