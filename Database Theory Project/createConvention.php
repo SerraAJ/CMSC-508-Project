@@ -81,31 +81,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     
     }
     $start_date = new DateTime($_POST["start_date"]);
-    if(strtotime($start_date) != FALSE)
-    {
-        if(strtotime($start_date) < strtotime('now'))
+        $current_time = new DateTime('now');
+        if($start_date < $current_time)
        {
           $start_date_error = "Your start date must not be in the past.";
        }
-    }
-    else
-    {
-        $start_date_error = "Invalid start date.";
-    }
+    
+    
     $start_date = date_format($start_date,"Y-m-d H:i:s");
     
     $end_date = new DateTime($_POST["end_date"]);
-    if(strtotime($end_date)!= FALSE)
-    {
-        if(strtotime($end_date < strtotime($start_date)))
+   
+    
+        if($end_date < $start_date)
         {
             $end_date_error = "The end date must be after the start date.";
         }
-    }
-    else
-    {
-        $end_date_error = "Invalid end date.";
-    }
+    
     $end_date = date_format($end_date,"Y-m-d H:i:s");
     
     $convention_type = test_input($_POST["convention_type"]);
