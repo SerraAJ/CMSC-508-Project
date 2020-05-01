@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $address_error = "You must enter the convention center's address.";
     }
-    elseif(strlen($address) > 999)
+    elseif(strlen($address) > 400)
     {
         $address_error = "This address is too long; must be 400 or fewer characters.";
     }
