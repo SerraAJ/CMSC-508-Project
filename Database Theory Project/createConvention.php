@@ -53,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $convention_name_error = "This name is too long. Must be 100 or fewer characters.";
     }
     
-    $convention_number = test_input($_POST["address"]);
+    $convention_number = test_input($_POST["convention_number"]);
     if(empty($convention_number))
     {
         $convention_number_error = "Please enter the convention's number.";
@@ -80,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         }
     
     }
-    $start_date = test_input($_POST["start_date"]);
+    //$start_date = test_input($_POST["start_date"]);
     if(strtotime($start_date) != FALSE)
     {
         if(strtotime($start_date) < strtotime('now'))
@@ -94,7 +94,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     }
     $start_date = date_format($start_date,"Y-m-d H:i:s");
     
-    $end_date = test_input($_POST["end_date"]);
+    //$end_date = test_input($_POST["end_date"]);
     if(strtotime($end_date)!= FALSE)
     {
         if(strtotime($end_date < strtotime($start_date)))
