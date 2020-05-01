@@ -187,18 +187,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 .
 Name of Convention: <input type = "text" name = "convention_name">
 <span class = "error">* <?php echo $convention_name_error; ?></span>
+<br><br>
 
 Convention Number: <input type = "text" name = "convention_number">
 <span class = "error">* <?php echo $convention_number_error; ?></span>
 <br><br>
 
 <label for="start_date">Start Date and Time:</label>
-<input type="datetime" id="start_date" name="start_date">
+<input type="datetime-local" id="start_date" name="start_date">
 <span class = "error">* <?php echo $start_date_error; ?></span>
 <br><br>
 
 <label for="end_date">End Date and Time:</label>
-<input type="datetime" id="end_date" name="end_date">
+<input type="datetime-local" id="end_date" name="end_date">
 <span class = "error">* <?php echo $end_date_error; ?></span>
 <br><br>
 
@@ -210,7 +211,7 @@ Convention Theme: <input type = "text" name = "convention_theme">
 <span class = "error"> <?php echo $convention_theme_error; ?></span>
 <br><br>
 
-<select id = "venue_id" name="venue_id">
+Venue: <select id = "venue_id" name="venue_id">
 <option>-</option>
 <?php 
 $sql = "SELECT  venue_id, name FROM convention_centers";
@@ -221,10 +222,10 @@ while($row = mysqli_fetch_array($results))
 }
 
 ?>
-</select>
+</select>*
 <span class = "error"> <?php echo $venue_id_error; ?></span>
 <br><br>
-
+<input type = "submit" name = "submit" value = "Submit">
 
 <br><br>
 </form>
