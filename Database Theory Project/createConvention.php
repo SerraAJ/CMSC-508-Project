@@ -15,7 +15,7 @@ $sql = "CREATE TABLE IF NOT EXISTS conventions(
     end_date            DATE NOT NULL,
     convention_type     VARCHAR(50) DEFAULT 'None',
     convention_theme    VARCHAR(50) DEFAULT 'None',
-    venue_id            INT NOT NULL;
+    venue_id            INT NOT NULL,
     PRIMARY KEY (convention_name, convention_number),
     FOREIGN KEY (venue_id) REFERENCES convention_centers(venue_id)
 )";
