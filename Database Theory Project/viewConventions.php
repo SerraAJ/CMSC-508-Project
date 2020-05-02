@@ -1,5 +1,5 @@
 <?php
-require_once "config.php";
+require "config.php";
 session_start();
 
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $inspect_con_name = substr($inspect_con, 0, strlen($inspect_con) - strrpos($inspect_con, " ") );
             $inspect_con_name = "'".$inspect_con_name."'";
             
-            $sql = "SELECT convention_name FROM convention_centers WHERE convention_name = ? AND convention_number = ?";
+            $sql = "SELECT convention_name FROM conventions WHERE convention_name = ? AND convention_number = ?";
             if($stmt = mysqli_prepare($conn, $sql))
             {
                 
@@ -52,14 +52,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     {
                         echo "Something's gone wrong; no convention with those details found.";
                     }
-                    echo "executed with ". $inspect_con_name . $inspect_con_number;
+                   
                 }
                 else
                 {
                     echo "Statement was not properly executed.";
                 }
                 mysqli_stmt_close($stmt);
-                echo "statement prepared";
+                
             }
             
         }
