@@ -27,7 +27,8 @@ while($row = mysqli_fetch_array($result))
     $venue_id = $row['venue_id'];
     $sql2 = "SELECT name FROM convention_centers WHERE venue_id =" . $venue_id;
     $result2 = mysqli_query($conn, $sql2);
-    $venue_name = mysqli_fetch_object($result2);
+    $row2 = mysqli_fetch_array($result2);
+    $venue_name = $row2['name'];
   
     
     echo"<tr><td style='width: 300px;'>".$name.
