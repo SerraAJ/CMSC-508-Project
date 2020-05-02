@@ -86,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $phone_number_error = "Please enter the phone number as a 10 digit number with no other characters.";
     }
     
-    $date_of_birth = date_format($_POST["date_of_birth"],"Y-m-d H:i:s");
+    $date_of_birth = date("Y-m-d H:i:s", strtotime($_POST["date_of_birth"]));
     
     if(strtotime($date_of_birth) > strtotime('now'))
     {
