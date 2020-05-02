@@ -32,12 +32,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $inspect_con_name = substr($inspect_con, 0, strrpos($inspect_con, " ") );
             echo $inspect_con_name." ".$inspect_con_number;
             
-            $sql = "SELECT * FROM conventions WHERE convention_name = ? AND convention_number = ?";
+            $sql = "SELECT convention_name FROM conventions WHERE convention_name = ? AND convention_number = ?";
             if($stmt = mysqli_prepare($conn, $sql))
             {
-                
                 mysqli_stmt_bind_param($stmt, "ss", $inspect_con_name, $inspect_con_number);
-                if(mysqli_stmt_execute($stmt))
+                if(mysqli_stmt_execute($stmt) == 1)
                 {
                    
                     mysqli_stmt_store_result($stmt);
