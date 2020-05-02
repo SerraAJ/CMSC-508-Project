@@ -17,9 +17,10 @@ $sql = "CREATE TABLE IF NOT EXISTS attendees(
     date_of_birth   DATE NOT NULL,
     convention_name    VARCHAR(100) NOT NULL,
     convention_number    VARCHAR (4) NOT NULL,
+    INDEX(convention_name, convention_number),
     PRIMARY KEY (person_id),
-    FOREIGN KEY (convention_name) REFERENCES conventions(convention_name),
-    FOREIGN KEY (convention_number) REFERENCES conventions(convention_number)
+    FOREIGN KEY (convention_name, convention_number) REFERENCES conventions(convention_name, convention_number),
+   
 )";
 
 if(mysqli_query($conn, $sql)){
