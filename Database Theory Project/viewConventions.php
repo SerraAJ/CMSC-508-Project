@@ -35,11 +35,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $sql = "SELECT convention_name FROM convention_centers WHERE convention_name = ? AND convention_number = ?";
             if($stmt = mysqli_prepare($conn, $sql))
             {
-                echo "statement prepared";
+                
                 mysqli_stmt_bind_param($stmt, "ss", $inspect_con_name, $inspect_con_number);
                 if(mysqli_stmt_execute($stmt) == 1)
                 {
-                    echo "executed with ". $inspect_con_name . $inspect_con_number;
+                   
                     mysqli_stmt_store_result($stmt);
                     if(mysqli_stmt_num_rows($stmt) == 1)
                     {
@@ -52,12 +52,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     {
                         echo "Something's gone wrong; no convention with those details found.";
                     }
+                    echo "executed with ". $inspect_con_name . $inspect_con_number;
                 }
                 else
                 {
                     echo "Statement was not properly executed.";
                 }
                 mysqli_stmt_close($stmt);
+                echo "statement prepared";
             }
             
         }
