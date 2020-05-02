@@ -76,7 +76,7 @@ table, th, td {border: 1px solid black;}
 <option>-</option>
 <?php 
 $sql = "SELECT  convention_name, convention_number 
-    FROM conventionss GROUP BY convention_name ORDER BY convention_number";
+    FROM conventions GROUP BY convention_name ORDER BY convention_number";
 $results = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($results))
 {
@@ -108,7 +108,7 @@ while($row = mysqli_fetch_array($result))
 {
     $name = $row['convention_name'];
     $number = $row['convention_number'];
-    $type = $row['type'];
+    $type = $row['convention_type'];
     $start = $row['start_date'];
     echo"<tr><td style='width: 300px;'>".$name .
     "</td><td style='width: 50px;'>".$number .
