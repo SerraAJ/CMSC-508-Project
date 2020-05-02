@@ -19,7 +19,7 @@ $sql = "CREATE TABLE IF NOT EXISTS attendees(
     convention_number    VARCHAR (4) NOT NULL,
     INDEX(convention_name, convention_number),
     PRIMARY KEY (person_id),
-    FOREIGN KEY (convention_name, convention_number) REFERENCES conventions(convention_name, convention_number),
+    FOREIGN KEY (convention_name, convention_number) REFERENCES conventions(convention_name, convention_number)
    
 )";
 
