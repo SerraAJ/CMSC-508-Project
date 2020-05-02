@@ -52,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 }
                 else
                 {
-                    echo "Statement was not properly executed.
+                    echo "Statement was not properly executed.";
                 }
                 mysqli_stmt_close($stmt);
             }
