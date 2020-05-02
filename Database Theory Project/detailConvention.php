@@ -53,6 +53,8 @@ table, th, td {border: 1px solid black;}
 </style>
 <body>
 <br><br>
+<a href = "createAttendee.php">Click here to register an Attendee for this event.</a>
+<br><br>
 <a href = "viewConventions.php">Click here to return to the list of Conventions.</a>
 </body>
 </html>

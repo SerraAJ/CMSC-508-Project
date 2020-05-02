@@ -10,6 +10,7 @@ if(isset($_SESSION ["bounce_message"]))
 {
     $message = $_SESSION["bounce_message"];
     echo $message;
+    $_SESSION["bounce_message"] = "";
 }
 
 echo "\nWhat would you like to do?\n \n"

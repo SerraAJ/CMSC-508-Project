@@ -11,7 +11,7 @@ require "config.php";
 $sql = "CREATE TABLE IF NOT EXISTS conventions(
     convention_name    VARCHAR(100) NOT NULL UNIQUE,
     convention_number    VARCHAR (4) NOT NULL,
-    start_date          DATE NOT NULL,
+    start_date         DATE NOT NULL,
     end_date            DATE NOT NULL,
     convention_type     VARCHAR(50) DEFAULT 'None',
     convention_theme    VARCHAR(50) DEFAULT 'None',
@@ -174,9 +174,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <html>
 <body>
 <h1>Add a new Convention</h1>
-<br>.
+<br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-.
+
 Name of Convention: <input type = "text" name = "convention_name">
 <span class = "error">* <?php echo $convention_name_error; ?></span>
 <br><br>
