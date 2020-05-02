@@ -9,7 +9,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
 }
 require "config.php";
 $sql = "CREATE TABLE IF NOT EXISTS conventions(
-    convention_name    VARCHAR(100) NOT NULL UNIQUE,
+    convention_name    VARCHAR(100) NOT NULL,
     convention_number    VARCHAR (4) NOT NULL,
     start_date         DATE NOT NULL,
     end_date            DATE NOT NULL,
