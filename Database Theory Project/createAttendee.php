@@ -100,8 +100,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if($stmt = mysqli_prepare($conn, $sql))
         {
             mysqli_stmt_bind_param($stmt, "sssssss", $first_name, $last_name, $phone_number, $address, $date_of_birth,$_SESSION["lookup_con_name"], $_SESSION["lookup_con_number"]);
+            if(mysqli_stmt_execute($stmt == 1))
+            {
+                $new_id = mysqli_insert_id($conn);
+                $_SESSION["bounce_message"] = ("Successfully added " . $first_name . " ". $last_name . " under ID " . $new_id . ".");
+                header("location: welcome.php");
+            }
+            else
+            {
+                echo "Something went wrong executing the statement to add this to the database. Please try again.";
+            }
+            mysqli_stmt_close($stmt);
         }
     }
+    mysqli_close($conn);
 }
 ?>
 
