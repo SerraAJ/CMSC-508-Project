@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $inspect_con_number = substr( $inspect_con, (strrpos($inspect_con, " ")));
             $inspect_con_name = substr($inspect_con, 0, strlen($inspect_con) - strrpos($inspect_con, " ") );
-            $inspect_con_name = "'".$inspect_con_name."'";
+            echo $inspect_con_name." ".$inspect_con_number;
             
             $sql = "SELECT convention_name FROM conventions WHERE convention_name = ? AND convention_number = ?";
             if($stmt = mysqli_prepare($conn, $sql))
