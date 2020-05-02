@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         else
         {
             $inspect_con_number = substr( $inspect_con, (strrpos($inspect_con, " ")));
-            $inspect_con_name = substr($inspect_con, 0, strlen($inspect_con) - 1 - strrpos($inspect_con, ""));
+            $inspect_con_name = substr($inspect_con, 0, strlen($inspect_con) - 2 - strrpos($inspect_con, ""));
             
             $sql = "SELECT * FROM convention_centers WHERE convention_name = ? AND convention_number = ?";
             if($stmt = mysqli_prepare($conn, $sql))
