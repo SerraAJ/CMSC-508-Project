@@ -30,11 +30,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $inspect_con_number = substr( $inspect_con, (strrpos($inspect_con, " ")));
             $inspect_con_name = substr($inspect_con, 0, strlen($inspect_con) - strrpos($inspect_con, " "));
+            $inspect_con_name = "'".$inspect_con_name."'";
             
             $sql = "SELECT * FROM convention_centers WHERE convention_name = ? AND convention_number = ?";
             if($stmt = mysqli_prepare($conn, $sql))
             {
-                mysqli_stmt_bind_param($stmt, "ss", "'".$inspect_con_name."'", $inspect_con_number);
+                mysqli_stmt_bind_param($stmt, "ss", $inspect_con_name, $inspect_con_number);
                 if(mysqli_stmt_execute($stmt) == 1)
                 {
                     mysqli_stmt_store_result($stmt);
