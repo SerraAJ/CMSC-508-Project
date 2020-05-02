@@ -24,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $inspect_con = test_input($_POST["conventions"]);
         if(strrpos($inspect_con, " ", 0) == false)
         {
-            $inspect_conerror = "You must select a database from the list to see its details.";
+            $inspect_con_error = "You must select a database from the list to see its details.";
         }
         else
         {
@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $sql = "SELECT * FROM convention_centers WHERE convention_name = ? AND convention_number = ?";
             if($stmt = mysqli_prepare($conn, $sql))
             {
-                mysqli_stmt_bind_param($stmt, "ss", $inspect_con_name, $inspect_con_number);
+                mysqli_stmt_bind_param($stmt, "ss", "'".$inspect_con_name."'", $inspect_con_number);
                 if(mysqli_stmt_execute($stmt) == 1)
                 {
                     mysqli_stmt_store_result($stmt);
@@ -49,6 +49,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     {
                         echo "Something's gone wrong; no convention with those details found.";
                     }
+                }
+                else
+                {
+                    echo "Statement was not properly executed.
                 }
                 mysqli_stmt_close($stmt);
             }
