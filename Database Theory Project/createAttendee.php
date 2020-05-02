@@ -99,7 +99,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     VALUES(?, ?, ?, ?, ?, ?, ?)";
         if($stmt = mysqli_prepare($conn, $sql))
         {
-            mysqli_bind_param($stmt, "sssssss", $first_name, $last_name, $phone_number, $address, $date_of_birth,$_SESSION["lookup_con_name"], $_SESSION["lookup_con_number"]);
+            mysqli_stmt_bind_param($stmt, "sssssss", $first_name, $last_name, $phone_number, $address, $date_of_birth,$_SESSION["lookup_con_name"], $_SESSION["lookup_con_number"]);
         }
     }
 }
