@@ -7,7 +7,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
     header("location:index.php");
     exit;
 }
-require_once "config.php";
+require "config.php";
 $sql = "CREATE TABLE IF NOT EXISTS conventions(
     convention_name    VARCHAR(100) NOT NULL UNIQUE,
     convention_number    VARCHAR (4) NOT NULL,
@@ -206,6 +206,7 @@ Convention Theme: <input type = "text" name = "convention_theme">
 Venue: <select id = "venue_id" name="venue_id">
 <option>-</option>
 <?php 
+require "config.php";
 $sql = "SELECT  venue_id, name FROM convention_centers";
 $results = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($results))
@@ -221,5 +222,7 @@ while($row = mysqli_fetch_array($results))
 
 <br><br>
 </form>
+
+<a href = "welcome.php">Go back to the welcome page by clicking here.</a>
 </body>
 </html>
