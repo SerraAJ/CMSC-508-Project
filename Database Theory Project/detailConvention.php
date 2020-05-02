@@ -14,7 +14,7 @@ $sql = "SELECT * FROM conventions WHERE convention_name = '". $lookup_con_name."
 
 $result = mysqli_query($conn, $sql);
 echo "<table>";
-echo "<tr> <th>Convention Name</th> <th>Number</th><th>Start Date</th><th>End Date</th><th>Theme</th>
+echo "<tr> <th>Convention Name</th> <th>Number</th><th>Start Date</th><th>End Date</th><th>Type</th><th>Theme</th>
     <th>Venue Name</th> <th>Venue ID</th></tr>";
 while($row = mysqli_fetch_array($result))
 {
