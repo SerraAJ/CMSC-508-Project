@@ -102,7 +102,7 @@ while($row = mysqli_fetch_array($results))
 <tr> <th>Convention Name</th><th>Number</th><th>Convention Type</th><th>Start Date</th></tr>
 <?php 
 $sql = "SELECT  convention_name, convention_number, convention_type, start_date
-    FROM conventionss GROUP BY convention_name ORDER BY convention_number";
+    FROM conventions GROUP BY convention_name ORDER BY convention_number";
 $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result))
 {
