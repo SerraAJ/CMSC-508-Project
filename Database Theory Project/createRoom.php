@@ -75,11 +75,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     }
     elseif(strlen($floor) > 3)
     {
-        $address_error = "Floor must be 3 or fewer characters.";
+        $floor_error = "Floor must be 3 or fewer characters.";
     }
     
     $name = test_input($_POST["name"]);
-    if(strlen($room_number) > 100)
+    if(strlen($name) > 100)
     {
         $name_error = "Room name must be 100 or fewer characters.";
     }
@@ -105,7 +105,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     if(empty($room_number_error) && empty($floor_error) && empty($name_error) && empty($maximum_occupancy_error))
     {
         echo "Preparing SQL...";
-        $sql = "INSERT INTO rooms (venue_id, room_number, floor, name, maximum_occupancy) VALUES (?, ?, ?, ?, ?,)";
+        $sql = "INSERT INTO rooms VALUES (?, ?, ?, ?, ?)";
         if($stmt = mysqli_prepare($conn, $sql))
         {
             echo "Binding sql...";
