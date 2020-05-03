@@ -104,7 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     
     if(empty($room_number_error) && empty($floor_error) && empty($room_name_error) && empty($maximum_occupancy_error))
     {
-        echo "Preparing SQL..."
+        echo "Preparing SQL...";
         $sql = "INSERT INTO rooms (venue_id, room_number, floor, room_name, maximum_occupancy) VALUES (?, ?, ?, ?, ?,)";
         if($stmt = mysqli_prepare($conn, $sql))
         {
