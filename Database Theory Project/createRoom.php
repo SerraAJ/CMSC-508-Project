@@ -104,13 +104,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     
     if(empty($room_number_error) && empty($floor_error) && empty($room_name_error) && empty($maximum_occupancy_error))
     {
+        echo "Preparing SQL..."
         $sql = "INSERT INTO rooms (venue_id, room_number, floor, room_name, maximum_occupancy) VALUES (?, ?, ?, ?, ?,)";
         if($stmt = mysqli_prepare($conn, $sql))
         {
+            echo "Binding sql...";
+           
             mysqli_stmt_bind_param($stmt, "isssi", $_SESSION["lookup_venue_id"], $room_number, $floor, $room_name, $maximum_occupancy);
-            if(mysqli_stmt_execute($stmt)== 1)
+            echo "executing...";
+            if(mysqli_stmt_execute($stmt))
             {
-                
+                echo "sql executed.";
                 if(empty($room_name))
                 {
                     $room_name = $room_number;
