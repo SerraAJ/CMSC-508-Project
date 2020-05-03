@@ -18,10 +18,10 @@ $sql = "CREATE TABLE IF NOT EXISTS events(
     room_number     CHAR(5) NOT NULL,
     venue_id        INT NOT NULL,
     event_type      VARCHAR(30) NOT NULL,
-    INDEX(room_number, venue_id),
+    INDEX(venue_id, room_number),
     INDEX(convention_name, convention_number),
     PRIMARY KEY (event_name, convention_name, convention_number),
-    FOREIGN KEY (room_number, venue_id) REFERENCES rooms(room_number, venue_id),
+    FOREIGN KEY (venue_id, room_number) REFERENCES rooms(venue_id, room_number),
     FOREIGN KEY (convention_name, convention_number) REFERENCES conventions(convention_name, convention_number)
     
 )";
