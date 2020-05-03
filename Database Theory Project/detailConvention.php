@@ -7,6 +7,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
     header("location:index.php");
     exit;
 }
+if(isset($_SESSION ["bounce_message"]))
+{
+    $message = $_SESSION["bounce_message"];
+    echo $message;
+    $_SESSION["bounce_message"] = "";
+}
 require_once "config.php";
 $lookup_con_name =  $_SESSION["lookup_con_name"];
 $lookup_con_number = $_SESSION["lookup_con_number"];
@@ -52,8 +58,13 @@ th, td {padding: 15px;}
 table, th, td {border: 1px solid black;}
 </style>
 <body>
+<h2>Manage this Convention</h2>
 <br><br>
 <a href = "createAttendee.php">Click here to register an Attendee for this event.</a>
+<br><br>
+<a href = "createGuest.php">Click here to add a featured Guest for this event.</a>
+<br><br>
+<a href = "createEmployee.php">Click here to add an Employee for this event.</a>
 <br><br>
 <a href = "viewConventions.php">Click here to return to the list of Conventions.</a>
 </body>

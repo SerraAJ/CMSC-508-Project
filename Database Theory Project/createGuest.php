@@ -8,7 +8,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
     exit;
 }
 require "config.php";
-$sql = "CREATE TABLE IF NOT EXISTS attendees(
+$sql = "CREATE TABLE IF NOT EXISTS guests(
     person_id          INT NOT NULL UNIQUE AUTO_INCREMENT,
     first_name      VARCHAR(30) NOT NULL,
     last_name       VARCHAR(30) NOT NULL,
@@ -20,7 +20,7 @@ $sql = "CREATE TABLE IF NOT EXISTS attendees(
     INDEX(convention_name, convention_number),
     PRIMARY KEY (person_id),
     FOREIGN KEY (convention_name, convention_number) REFERENCES conventions(convention_name, convention_number)
-   
+    
 )";
 
 if(mysqli_query($conn, $sql)){
@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $address = test_input($_POST["address"]);
     if(empty($address))
     {
-        $address_error = "You must enter the attendee's address.";
+        $address_error = "You must enter the guest's address.";
     }
     elseif(strlen($address) > 400)
     {
@@ -75,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $phone_number = test_input($_POST["phone_number"]);
     if(empty($phone_number))
     {
-        $phone_number_error = "Please enter a phone number for the attendee.";
+        $phone_number_error = "Please enter a phone number for the guest or guest's agent.";
     }
     else if(!ctype_digit($phone_number))
     {
@@ -95,7 +95,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     
     if(empty($first_name_error) && empty($last_name_error) && empty($phone_number_error) && empty($address_error) && empty($date_of_birth_error))
     {
-        $sql = "INSERT INTO attendees (first_name, last_name, phone_number, address, date_of_birth, convention_name, convention_number)
+        $sql = "INSERT INTO guests (first_name, last_name, phone_number, address, date_of_birth, convention_name, convention_number)
                     VALUES(?, ?, ?, ?, ?, ?, ?)";
         if($stmt = mysqli_prepare($conn, $sql))
         {
@@ -120,7 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <!DOCTYPE html>
 <html>
 <body>
-<h1>Register a new attendee for <?php echo $_SESSION["lookup_con_name"] . " " . $_SESSION["lookup_con_number"]?></h1>
+<h1>Register a featured guest for <?php echo $_SESSION["lookup_con_name"] . " " . $_SESSION["lookup_con_number"]?></h1>
 <br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
