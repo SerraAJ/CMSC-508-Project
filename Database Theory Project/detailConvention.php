@@ -61,13 +61,18 @@ table, th, td {border: 1px solid black;}
 <a href = "viewConventions.php">Click here to return to the list of Conventions.</a>
 <br>
 <h2>Manage this Convention</h2>
+<br>
+<h3>Manage People</h3>
+<br>
+<a href = "createAttendee.php">Click here to register an Attendee for this convention.</a>
 <br><br>
-<a href = "createAttendee.php">Click here to register an Attendee for this event.</a>
+<a href = "createGuest.php">Click here to add a featured Guest for this convention.</a>
 <br><br>
-<a href = "createGuest.php">Click here to add a featured Guest for this event.</a>
+<a href = "createEmployee.php">Click here to add an Employee for this conventions.</a>
 <br><br>
-<a href = "createEmployee.php">Click here to add an Employee for this event.</a>
-<br><br>
+<h3>Manage Events</h3>
+<br>
+<a href = "createEvent.php">Click here to add an Event for this Convention.</a>
 
 </body>
 </html>
