@@ -7,6 +7,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
     exit;
 }
 require_once "config.php";
+if(isset($_SESSION ["bounce_message"]))
+{
+    $message = $_SESSION["bounce_message"];
+    echo $message;
+    $_SESSION["bounce_message"] = "";
+}
 $lookup_venue_id =  $_SESSION["lookup_venue_id"];
 $sql = "SELECT * FROM convention_centers WHERE venue_id = " . $lookup_venue_id;
 
@@ -44,5 +50,10 @@ table, th, td {border: 1px solid black;}
 <body>
 <br><br>
 <a href = "viewConventionCenter.php">Click here to return to the list of Convention Centers.</a>
+
+<h2>Manage this Venue</h2>
+<br><br>
+<a href = "createRoom.php">Click here to register a room in this venue.</a>
+<br><br>
 </body>
 </html>
