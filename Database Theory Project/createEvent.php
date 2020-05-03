@@ -31,7 +31,7 @@ if(mysqli_query($conn, $sql)){
 } else{
     echo "ERROR: Could not  execute $sql. " . mysqli_error($conn);
 }
-$sql = "DELIMITER//
+$sql = "DELIMITER //
         CREATE PROCEDURE createConventionServices(
             IN i_event_name VARCHAR(100),
             IN i_convention_name VARCHAR(100),
