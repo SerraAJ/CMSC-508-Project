@@ -53,7 +53,7 @@ $sql = "DELIMITER //
                 i_room_number,'Convention Services');
         INSERT INTO convention_services 
             VALUES (i_event_name, i_convention_name, i_convention_number);
-        END//
+        END //
         DELIMITER ;
 ";
 if(mysqli_query($conn, $sql)){
