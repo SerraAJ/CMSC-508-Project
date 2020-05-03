@@ -193,7 +193,7 @@ SSN: <input type = "text" name = "ssn">
 <br><br>
 
 Hourly Pay Rate: <input type = "number" min = "0" step = "0.01" max = "999.99" name = "pay_rate">
-<span class = "error">* <?php  echo $pay_rate._error; ?></span>
+<span class = "error">* <?php  echo $pay_rate_error; ?></span>
 <br><br>
 
 <input type = "submit" name = "submit" value = "Submit">
