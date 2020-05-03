@@ -27,11 +27,11 @@ if(mysqli_query($conn, $sql)){
 
 $room_number = "";
 $floor = "";
-$room_name = "";
+$name = "";
 $maximum_occupancy = "";
 $room_number_error = "";
 $floor_error = "";
-$room_name_error = "";
+$name_error = "";
 $maximum_occupancy_error = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -78,10 +78,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $address_error = "Floor must be 3 or fewer characters.";
     }
     
-    $room_name = test_input($_POST["room_name"]);
+    $name = test_input($_POST["name"]);
     if(strlen($room_number) > 100)
     {
-        $room_name_error = "Room name must be 100 or fewer characters.";
+        $name_error = "Room name must be 100 or fewer characters.";
     }
     
     $maximum_occupancy = test_input($_POST["maximum_occupancy"]);
@@ -102,24 +102,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $maximum_occupancy_error = "Max occupancy must be at most 9999.";
     }
     
-    if(empty($room_number_error) && empty($floor_error) && empty($room_name_error) && empty($maximum_occupancy_error))
+    if(empty($room_number_error) && empty($floor_error) && empty($name_error) && empty($maximum_occupancy_error))
     {
         echo "Preparing SQL...";
-        $sql = "INSERT INTO rooms (venue_id, room_number, floor, room_name, maximum_occupancy) VALUES (?, ?, ?, ?, ?,)";
+        $sql = "INSERT INTO rooms (venue_id, room_number, floor, name, maximum_occupancy) VALUES (?, ?, ?, ?, ?,)";
         if($stmt = mysqli_prepare($conn, $sql))
         {
             echo "Binding sql...";
            
-            mysqli_stmt_bind_param($stmt, "isssi", $_SESSION["lookup_venue_id"], $room_number, $floor, $room_name, $maximum_occupancy);
+            mysqli_stmt_bind_param($stmt, "isssi", $_SESSION["lookup_venue_id"], $room_number, $floor, $name, $maximum_occupancy);
             echo "executing...";
             if(mysqli_stmt_execute($stmt))
             {
                 echo "sql executed.";
-                if(empty($room_name))
+                if(empty($name))
                 {
-                    $room_name = $room_number;
+                    $name = $room_number;
                 }
-                $_SESSION["bounce_message"] = ("Successfully added room " . $room_name . " on floor ". $floor . " to venue " . $_SESSION["lookup_venue_id"] . ".");
+                $_SESSION["bounce_message"] = ("Successfully added room " . $name . " on floor ". $floor . " to venue " . $_SESSION["lookup_venue_id"] . ".");
                 header("location: detailConventionCenter.php");
             }
             else
@@ -144,8 +144,8 @@ Room Number: <input type = "text" name = "room_number">
 <span class = "error">* <?php echo $room_number_error; ?></span>
 <br><br>
 
-Room Name (if different): <input type = "text" name = "room_name">
-<span class = "error"> <?php echo $room_name_error; ?></span>
+Room Name (if different): <input type = "text" name = "name">
+<span class = "error"> <?php echo $name_error; ?></span>
 <br><br>
 
 Floor: <input type = "text" name = "floor">
