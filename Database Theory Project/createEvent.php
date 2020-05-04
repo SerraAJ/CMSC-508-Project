@@ -32,7 +32,7 @@ if(mysqli_query($conn, $sql)){
     echo "ERROR: Could not  execute $sql. " . mysqli_error($conn);
 }
 $sql = "
-        create procedure createConventionServices (
+        CREATE PROCEDURE IF NOT EXISTS createConventionServices (
             IN i_event_name VARCHAR(100),
             IN i_convention_name VARCHAR(100),
             IN i_convention_number VARCHAR(4),
