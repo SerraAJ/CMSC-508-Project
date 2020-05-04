@@ -31,8 +31,8 @@ if(mysqli_query($conn, $sql)){
 } else{
     echo "ERROR: Could not  execute $sql. " . mysqli_error($conn);
 }
-$sql = "
-        DROP PROCEDURE IF EXISTS createConventionServices;
+/*$sql = "
+        
         CREATE PROCEDURE createConventionServices (
             IN i_event_name VARCHAR(100),
             IN i_convention_name VARCHAR(100),
@@ -61,7 +61,7 @@ if(mysqli_query($conn, $sql)){
     
 } else{
     echo "ERROR: Could not  execute Convention Services procedure. " . mysqli_error($conn);
-}
+}*/
 
 $event_name="";
 $convention_name = $_SESSION["lookup_con_name"];
