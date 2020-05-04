@@ -7,7 +7,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
     header("location:index.php");
     exit;
 }
-require "config.php";
+require_once "config.php";
 $sql = "CREATE TABLE IF NOT EXISTS events(
     event_name      VARCHAR(100) NOT NULL,
     convention_name VARCHAR(100) NOT NULL,
