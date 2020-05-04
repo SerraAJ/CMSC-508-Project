@@ -31,7 +31,14 @@ if(mysqli_query($conn, $sql)){
 } else{
     echo "ERROR: Could not  execute $sql. " . mysqli_error($conn);
 }
-/*$sql = "
+
+$sql = "DROP PROCEDURE IF EXISTS createConventionServices;";
+if(mysqli_query($conn, $sql)){
+    
+} else{
+    echo "ERROR: Could not  execute $sql. " . mysqli_error($conn);
+}
+$sql = "
         
         CREATE PROCEDURE createConventionServices (
             IN i_event_name VARCHAR(100),
@@ -40,7 +47,8 @@ if(mysqli_query($conn, $sql)){
             IN i_start_time DATETIME,
             IN i_end_time DATETIME,
             IN i_description VARCHAR(400),
-            IN i_room_number CHAR(5) )
+            IN i_room_number CHAR(5),
+            IN i_venue_id INT)
         BEGIN
         CREATE TABLE IF NOT EXISTS convention_services (
             event_name      VARCHAR(100) NOT NULL,
@@ -61,7 +69,7 @@ if(mysqli_query($conn, $sql)){
     
 } else{
     echo "ERROR: Could not  execute Convention Services procedure. " . mysqli_error($conn);
-}*/
+}
 
 $event_name="";
 $convention_name = $_SESSION["lookup_con_name"];
@@ -142,7 +150,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $sql = "SELECT start_time, end_time, event_name FROM events WHERE convention_name = ". $convention_name ." AND convention_number = " .
                 $convention_number . " AND room_number = ". $room_number;
     $result = mysqli_query($conn, $sql);
-                if(mysqli_num_rows($result) > 0)
+                if( !$result ||mysqli_num_rows($result) > 0)
                 {
                     while($row = mysqli_fetch_array($result))
                     {
@@ -171,15 +179,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       
       $room_number = test_input($_POST["room_number"]);
       
-      $sql = "SELECT venue_id FROM conventions WHERE convention_name = ".$convention_name." AND convention_number = ".$convention_number;
-      $result = mysqli_query($conn, $sql);
-      if(mysqli_num_rows($result) > 0)
-      {
-          while($row = mysqli_fetch_array($result))
-          {
-                $venue_id = $row["venue_id"];
-          }
-      }
+      $venue_id = $_SESSION["lookup_con_v_id"];
       $sql = "SELECT room_number FROM rooms WHERE venue_id = ? AND room_number = ?";
       if($stmt = mysqli_prepare($conn, $sql))
       {
@@ -271,7 +271,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if($stmt = mysqli_prepare($conn, $sql))
         {
             mysqli_stmt_bind_param($stmt, "sssssss", $event_name, $convention_name, $convention_number, $start_time, $end_time,
-                $description, $room_number);
+                $description, $room_number,$venue_id);
             if(mysqli_stmt_execute($stmt)== 1)
             {
      
