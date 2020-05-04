@@ -32,7 +32,8 @@ if(mysqli_query($conn, $sql)){
     echo "ERROR: Could not  execute $sql. " . mysqli_error($conn);
 }
 $sql = "
-        CREATE PROCEDURE IF NOT EXISTS createConventionServices (
+        IF NOT EXISTS(SELECT 1 FROM mysql.proc p WHERE db = 'project_25' AND name = 'createConventionServices') THEN
+        CREATE PROCEDURE createConventionServices (
             IN i_event_name VARCHAR(100),
             IN i_convention_name VARCHAR(100),
             IN i_convention_number VARCHAR(4),
@@ -54,6 +55,7 @@ $sql = "
         INSERT INTO convention_services 
             VALUES (i_event_name, i_convention_name, i_convention_number);
         END;
+        END IF;
 ";
 if(mysqli_query($conn, $sql)){
     
