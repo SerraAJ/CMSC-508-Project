@@ -256,12 +256,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $type_error = "Must select an event type.";
     }
+    echo "Right before error check.";
     
     if(empty($event_name_error) && empty($start_time_error) && empty($end_time_error) && empty($description_error) && empty($room_number_error) && empty($type_error) )  {
-        
+        echo "error check success";
         if($is_type_convention_services == 1)
         {
-            $sql = "CALL createConventionServices(?, ?, ?, ?, ?, ?, ?)";
+            $sql = "CALL createConventionServices(?, ?, ?, ?, ?, ?, ?, ?)";
         }
         else
         {
@@ -271,7 +272,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         
         if($stmt = mysqli_prepare($conn, $sql))
         {
-            mysqli_stmt_bind_param($stmt, "sssssss", $event_name, $convention_name, $convention_number, $start_time, $end_time,
+            mysqli_stmt_bind_param($stmt, "sssssssi", $event_name, $convention_name, $convention_number, $start_time, $end_time,
                 $description, $room_number,$venue_id);
             if(mysqli_stmt_execute($stmt)== 1)
             {
