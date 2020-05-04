@@ -47,6 +47,7 @@ while($row = mysqli_fetch_array($result))
     "</td><td style='width: 50px;'>".$venue_id."</td></tr>";
 }
 echo "</table>";
+$_SESSION["lookup_con_v_id"] = $venue_id;
 mysqli_close($conn);
 ?>
 
