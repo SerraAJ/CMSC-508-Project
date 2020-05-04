@@ -152,7 +152,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $result = mysqli_query($conn, $sql);
                 if( !$result ||mysqli_num_rows($result) > 0)
                 {
-                    while($row = mysqli_fetch_array($result))
+                    while( $result || $row = mysqli_fetch_array($result))
                     {
                         
                         if($start_time >= $row["start_time"] && $start_time < $row["end_time"])
