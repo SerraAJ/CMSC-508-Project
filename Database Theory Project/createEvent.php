@@ -324,7 +324,7 @@ if(mysqli_num_rows($result) > 0)
 {
     while($row = mysqli_fetch_array($result))
     {
-        $venue_id = $row["venue_id"];
+        $venue_id = $row[venue_id];
     }
 }
 $sql = "SELECT  room_number FROM rooms WHERE venue_id =" . $venue_id;
