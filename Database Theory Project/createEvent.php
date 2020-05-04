@@ -31,7 +31,7 @@ if(mysqli_query($conn, $sql)){
 } else{
     echo "ERROR: Could not  execute $sql. " . mysqli_error($conn);
 }
-$sql = "DELIMITER // \n
+$sql = "
         create procedure createConventionServices (
             IN i_event_name VARCHAR(100),
             IN i_convention_name VARCHAR(100),
@@ -53,8 +53,7 @@ $sql = "DELIMITER // \n
                 i_room_number,'Convention Services');
         INSERT INTO convention_services 
             VALUES (i_event_name, i_convention_name, i_convention_number);
-        END //
-        DELIMITER ;
+        END;
 ";
 if(mysqli_query($conn, $sql)){
     
