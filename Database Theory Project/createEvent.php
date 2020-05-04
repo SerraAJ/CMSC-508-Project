@@ -112,7 +112,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $start_time = new DateTime($_POST["start_time"]);
     $end_time = new DateTime($_POST["end_time"]);
     $current_time = new DateTime('now');
-    
+    $current_time = date_format($current_time,"Y-m-d H:i:s");
     $sql = "SELECT start_date, end_date FROM conventions WHERE convention_name = '".$convention_name."' AND convention_number = '".$convention_number."'";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0)
