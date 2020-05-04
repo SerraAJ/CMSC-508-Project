@@ -201,49 +201,49 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       }
       
       $type_count = 0;
-      $selected = $_POST['event_type'];
+      $selected = test_input($_POST['event_type']);
       
-          if(test_input($selected) == "Convention Services")
+          if($selected == "Convention Services")
           {
               $is_type_convention_services = 1;
               $type_count ++;
           }
-          if(test_input($selected) == "Child Event")
+          if($selected == "Child Event")
           {
               $is_type_child_event = 1;
               $type_count ++;
           }
-          if(test_input($selected) == "Main Event")
+          if($selected == "Main Event")
           {
               $is_type_main_event = 1;
               $type_count ++;
           }
-          if(test_input($selected) == "Adult Only")
+          if($selected == "Adult Only")
           {
               $is_type_adult_only = 1;
               $type_count ++;
           }
-          if(test_input($selected) == "Shopping Area")
+          if($selected == "Shopping Area")
           {
               $is_type_shopping_area = 1;
               $type_count ++;
           }
-          if(test_input($selected) == "Paid Entry")
+          if($selected == "Paid Entry")
           {
               $is_type_paid_entry = 1;
               $type_count ++;
           }
-          if(test_input($selected) == "Crafting")
+          if($selected == "Crafting")
           {
               $is_type_crafting = 1;
               $type_count ++;
           }
-          if(test_input($selected) == "Panel")
+          if($selected == "Panel")
           {
               $is_type_panel = 1;
               $type_count ++;
           }
-          if(test_input($selected) == "Cosplay Show")
+          if($selected == "Cosplay Show")
           {
               $is_type_cosplay_show = 1;
               $type_count ++;
@@ -333,7 +333,7 @@ while($row = mysqli_fetch_array($results))
 Event Type:<select id = "event_type" name="event_type">
 <option>-</option>
 <option>Convention Services</option>
-<option>Child Event </option>
+<option>Child Event</option>
 </select>*
 <span class = "error"> <?php echo $type_error; ?></span>
 <br><br>
