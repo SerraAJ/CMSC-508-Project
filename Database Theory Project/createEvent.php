@@ -317,7 +317,7 @@ Event Description: <input type = "text" name = "description">
 Room Number: <select id = "room_number" name="room_number">
 <option>-</option>
 <?php 
-require "config.php";
+require_once "config.php";
 $sql = "SELECT  room_number FROM rooms WHERE venue_id =" . $venue_id;
 $results = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($results))
