@@ -171,7 +171,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       
       $room_number = test_input($_POST["room_number"]);
       
-      $sql = "SELECT venui_id FROM conventions WHERE convention_name = ".$convention_name." AND convention_number = ".$convention_number;
+      $sql = "SELECT venue_id FROM conventions WHERE convention_name = ".$convention_name." AND convention_number = ".$convention_number;
       $result = mysqli_query($conn, $sql);
       if(mysqli_num_rows($result) > 0)
       {
@@ -318,6 +318,15 @@ Room Number: <select id = "room_number" name="room_number">
 <option>-</option>
 <?php 
 require_once "config.php";
+$sql = "SELECT venue_id FROM conventions WHERE convention_name = ".$convention_name." AND convention_number = ".$convention_number;
+$result = mysqli_query($conn, $sql);
+if(mysqli_num_rows($result) > 0)
+{
+    while($row = mysqli_fetch_array($result))
+    {
+        $venue_id = $row["venue_id"];
+    }
+}
 $sql = "SELECT  room_number FROM rooms WHERE venue_id =" . $venue_id;
 $results = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($results))
