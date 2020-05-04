@@ -115,8 +115,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     
     $sql = "SELECT start_date, end_date FROM conventions WHERE convention_name = ".$convention_name." AND convention_number = ".$convention_number;
     $result = mysqli_query($conn, $sql);
-    if(mysqli_num_rows($result) > 0)
-    {
+    
         while($row = mysqli_fetch_array($result))
         {
             $con_start_date = $row["start_date"];
@@ -141,11 +140,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $end_time_error = "End time must be after Start time.";
         }
-    }
-    else
-    {
-        $start_time_error = "Could not find matching Convention.";
-    }
+    
     
     $sql = "SELECT start_time, end_time, event_name FROM events WHERE convention_name = ". $convention_name ." AND convention_number = " .
                 $convention_number . " AND room_number = ". $room_number;
