@@ -150,9 +150,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $sql = "SELECT start_time, end_time, event_name FROM events WHERE convention_name = ". $convention_name ." AND convention_number = " .
                 $convention_number . " AND room_number = ". $room_number;
     $result = mysqli_query($conn, $sql);
-                if( !$result ||mysqli_num_rows($result) > 0)
+            if($result)
+                if(mysqli_num_rows($result) > 0)
                 {
-                    while( $result || $row = mysqli_fetch_array($result))
+                    while( $row = mysqli_fetch_array($result))
                     {
                         
                         if($start_time >= $row["start_time"] && $start_time < $row["end_time"])
