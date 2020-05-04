@@ -309,7 +309,7 @@ Event Name: <input type = "text" name = "event_name">
 <br><br>
 
 Event Description: <input type = "text" name = "description">
-<span class = "error">* <?php echo $description_error; ?></span>
+<span class = "error"> <?php echo $description_error; ?></span>
 <br><br>
 
 Room Number: <select id = "room_number" name="room_number">
@@ -328,11 +328,14 @@ while($row = mysqli_fetch_array($results))
 <span class = "error"> <?php echo $room_number_error; ?></span>
 <br><br>
 
-Event Type: *
-<br>
-<input type = "radio" name = "event_type" value = "Convention Services">Convention Services
-<br>
-<input type = "radio" name = "event_type" value = "Child Event">Child Event
+Event Type:<select id = "event_type" name="event_type">
+<option>-</option>
+<option>Convention Services</option>
+<option>Child Event </option>
+</select>*
+<span class = "error"> <?php echo $type_error; ?></span>
+<br><br>
+
 
 
 <input type = "submit" name = "submit" value = "Submit">
